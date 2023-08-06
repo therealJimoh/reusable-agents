@@ -1,8 +1,7 @@
 pipeline {
-
     environment {
-        DOTNET="dotnet"
-        IMG_TAG="5.0"
+        DOTNET = 'dotnet'
+        IMG_TAG = '5.0'
     }
 
     agent {
@@ -12,14 +11,13 @@ pipeline {
     }
 
     stages {
-        
-        stage('Build Docker Image for dotNet5.0'){
-             steps {
+        stage('Build Docker Image for dotNet5.0') {
+            steps {
                 sh 'pwd'
-                DotnetAgents = docker.build("$DOTNET:$IMG_TAG", "-f dotnetagent/Dockerfile .")
-             }
+                DotnetAgents = docker.build("$DOTNET:$IMG_TAG", '-f dotnetagent/Dockerfile .')
             }
         }
+    }
 
         // stage ('Publish Agent Image for dotNet5.0'){
         //     steps{
@@ -29,13 +27,10 @@ pipeline {
         //                 env.DOCKER_REGISTRY_HOST   = "test-docker-registry.nibss-plc.com.ng"
         //                 env.DOCKER_REGISTRY_SECRET = "TestDockerRegistry"
 
-        //                 docker.withRegistry('https://test-docker-registry.nibss-plc.com.ng', 'TestDockerRegistry') {
-        //                     DotnetAgents .push()
-        //                 }
-        //         }
-        //     }
-        // }
-    }
-
-
+//                 docker.withRegistry('https://test-docker-registry.nibss-plc.com.ng', 'TestDockerRegistry') {
+//                     DotnetAgents .push()
+//                 }
+//         }
+//     }
+// }
 }
