@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     sh 'pwd'
-                    DotnetAgents = docker.build("$DOTNET:$IMG_TAG", '-f dotnetagent/Dockerfile .')
+                    DotnetAgents = docker.build("$DOTNET:$IMG_TAG", "-f dotnetagent/Dockerfile .")
                 }
             }
         }
