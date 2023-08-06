@@ -1,0 +1,43 @@
+pipeline {
+
+    environment {
+        DOTNET="dotnet"
+        IMG_TAG="5.0"
+    }
+
+    agent {
+        dockerfile {
+            dir 'jenkins'
+        }
+    }
+
+    stages {
+        
+        stage('Build Docker Image for dotNet5.0'){
+            steps{
+                script {
+                    sh 'pwd && dotnetagents'
+                    sh 'ls'
+                    // DotnetAgents = docker.build("$DOTNET:$IMG_TAG", "-f Dockerfile .")
+                }
+            }
+        }
+
+        // stage ('Publish Agent Image for dotNet5.0'){
+        //     steps{
+        //         script{
+        //                 // Publish Agent to testdocker registry
+        //                 env.DOCKER_REGISTRY        = "https://test-docker-registry.nibss-plc.com.ng"
+        //                 env.DOCKER_REGISTRY_HOST   = "test-docker-registry.nibss-plc.com.ng"
+        //                 env.DOCKER_REGISTRY_SECRET = "TestDockerRegistry"
+
+        //                 docker.withRegistry('https://test-docker-registry.nibss-plc.com.ng', 'TestDockerRegistry') {
+        //                     DotnetAgents .push()
+        //                 }
+        //         }
+        //     }
+        // }
+    }
+
+
+}
