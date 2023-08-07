@@ -16,7 +16,7 @@ pipeline {
                 script {
                     dir('dotnetagent') {
                         sh 'ls'
-                        DotnetAgents = docker.build("$DOTNET:$IMG_TAG", "-f Dockerfile .")
+                        DotnetAgents = docker.build("$DOTNET:$IMG_TAG", '-f Dockerfile .')
                     }
                 }
             }
@@ -31,10 +31,15 @@ pipeline {
         //                 env.DOCKER_REGISTRY_HOST   = "test-docker-registry.nibss-plc.com.ng"
         //                 env.DOCKER_REGISTRY_SECRET = "TestDockerRegistry"
 
-//                 docker.withRegistry('https://test-docker-registry.nibss-plc.com.ng', 'TestDockerRegistry') {
-//                     DotnetAgents .push()
-//                 }
-//         }
-//     }
-// }
+    //                 docker.withRegistry('https://test-docker-registry.nibss-plc.com.ng', 'TestDockerRegistry') {
+    //                     DotnetAgents .push()
+    //                 }
+    //         }
+    //     }
+    // }
+    post {
+        always {
+            cleanWs()
+        }
+    }
 }
