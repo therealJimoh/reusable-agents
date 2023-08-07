@@ -16,7 +16,7 @@ pipeline {
                 script {
                     dir('dotnetagent') {
                         sh 'ls'
-                    // DotnetAgents = docker.build("$DOTNET:$IMG_TAG", "-f /dotnetagent/Dockerfile .")
+                        DotnetAgents = docker.build("$DOTNET:$IMG_TAG", "-f Dockerfile .")
                     }
                 }
             }
