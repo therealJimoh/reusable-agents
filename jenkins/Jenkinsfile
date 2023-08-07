@@ -14,9 +14,10 @@ pipeline {
         stage('Build Docker Image for dotNet5.0') {
             steps {
                 script {
-                    sh "'pwd' && 'cd dotnetagent'"
-                    sh 'ls'
+                    dir('dotnetagent') {
+                        sh 'ls'
                     // DotnetAgents = docker.build("$DOTNET:$IMG_TAG", "-f /dotnetagent/Dockerfile .")
+                    }
                 }
             }
         }
